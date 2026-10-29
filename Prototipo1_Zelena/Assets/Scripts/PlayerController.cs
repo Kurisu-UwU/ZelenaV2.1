@@ -84,8 +84,11 @@ public class PlayerController2D : MonoBehaviour
 
         // Actualizar parámetros del Animator
         bool isWalking = horizontalInput != 0;
-        anim.SetBool("IsWalking", isWalking);
-        anim.SetBool("IsJumping", !isGrounded);
+        if (!estaQuemandose) {
+            anim.SetBool("IsWalking", isWalking);
+            anim.SetBool("IsJumping", !isGrounded);
+        }
+        anim.SetBool("isBurning",estaQuemandose);
     }
 
     void FixedUpdate()
@@ -205,6 +208,4 @@ public class PlayerController2D : MonoBehaviour
 
         Debug.Log("❄️ El fuego se apagó y la velocidad volvió a 8f");
     }
-
-
 }
